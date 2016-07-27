@@ -1,0 +1,42 @@
+{
+  "name": "hubot-versions",
+  "version": "0.1.11",
+  "description": "A script for displaying all of the scripts that a bot depends on",
+  "main": "index.js",
+  "respository": {
+     "url": "https://github.com/ibm-cloud-solutions/hubot-versions",
+     "type": "git"
+   },
+  "scripts": {
+    "coverage": "istanbul cover -x 'index.js' -x '**/coverage/**' -x '**/tools/**' --include-all-sources --report lcov --report cobertura --report text --dir ./gh-pages/coverage _mocha -- test",
+    "lint": "eslint src/**/*.js test/**/*.js index.js",
+    "test": "mocha test"
+  },
+  "keywords": [
+    "hubot-scripts",
+    "hubot",
+    "version"
+  ],
+  "author": "ibm-cloud-solutions",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coffee-script": "^1.10.0",
+    "eslint": "^2.13.1",
+    "eslint-config-strongloop": "^2.0.1",
+    "istanbul": "0.4.0",
+    "istanbul-cobertura-badger": "1.2.1",
+    "mocha": "^2.5.3",
+    "proxyquire": "^1.7.9",
+    "rimraf": "^2.5.2",
+    "shelljs": "^0.7.0"
+  },
+  "peerDependencies": {
+    "hubot-ibmcloud-formatter": ">=0.0.8",
+    "hubot": "^2.19.0"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "findup": "^0.1.5"
+  }
+}
