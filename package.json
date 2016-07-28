@@ -1,7 +1,7 @@
 {
   "name": "hubot-versions",
   "version": "0.1.11",
-  "description": "A script for displaying all of the scripts that a bot depends on",
+  "description": "A Hubot Script for identifying the current versions of the bot and all dependency scripts.",
   "main": "index.js",
   "respository": {
      "url": "https://github.com/ibm-cloud-solutions/hubot-versions",
