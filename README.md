@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/ibm-cloud-solutions/hubot-versions.svg?branch=master)](https://travis-ci.org/ibm-cloud-solutions/hubot-versions)
+[![Dependency Status](https://dependencyci.com/github/ibm-cloud-solutions/hubot-versions/badge)](https://dependencyci.com/github/ibm-cloud-solutions/hubot-versions)
+[![Coverage Status](https://coveralls.io/repos/github/ibm-cloud-solutions/hubot-versions/badge.svg?branch=cleanup)](https://coveralls.io/github/ibm-cloud-solutions/hubot-versions?branch=cleanup)
+[![npm](https://img.shields.io/npm/v/hubot-versions.svg?maxAge=2592000)](https://www.npmjs.com/package/hubot-versions)
+
+
 # hubot-versions
 
 A Hubot Script for identifying the current versions of the bot and all dependency scripts.
@@ -8,21 +14,21 @@ A Hubot Script for identifying the current versions of the bot and all dependenc
 * [License](#license)
 * [Contribute](#contribute)
 
-## Installation <a id="installation"></a>
+## Installation
 ```
 npm install -S hubot-versions
 ```
 
 Then add `"hubot-versions"` to your bot's `external-scripts.json`.
 
-## Dependencies <a id="dependencies"></a>
+## Dependencies
 
 This script emits the version results as the event `ibmcloud.formatter`, which is a listener from `hubot-ibmcloud-formatter`.
 
-## License <a id="license"></a>
+## License
 
-See [LICENSE.txt](./LICENSE.txt) for license information.
+See [LICENSE.txt](https://github.com/ibm-cloud-solutions/hubot-versions/blob/master/LICENSE.txt) for license information.
 
-## Contribute <a id="contribute"></a>
+## Contribute
 
-Please check out our [Contribution Guidelines](./CONTRIBUTING.md) for detailed information on how you can lend a hand.
+Please check out our [Contribution Guidelines](https://github.com/ibm-cloud-solutions/hubot-versions/blob/master/CONTRIBUTING.md) for detailed information on how you can lend a hand.
