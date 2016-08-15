@@ -19,6 +19,8 @@
 
 const dependencies = require('../lib/dependencies');
 
+const SHOW_VERSION = /version(.*)/i;
+
 module.exports = robot => {
 
 	let deps;
@@ -26,14 +28,26 @@ module.exports = robot => {
 		deps = metadata;
 	});
 
-	robot.respond(/version/i, (res) => {
+	robot.respond(SHOW_VERSION, (res) => {
+		let matchString = '';
+		if (res.match.length > 1) {
+			matchString = res.match[1].trim();
+		}
+
 		const attachment = {
 			pretext: `Your bot is at version ${deps.version}.`,
 			fields: [],
 			color: '#555'
 		};
 		attachment.fields = Object.keys(deps.dependencies).map(dep => {
-			return {title: dep, value: deps.dependencies[dep], short: true};
+			if (matchString) {
+				if (dep.indexOf(matchString) > -1) {
+					return {title: dep, value: deps.dependencies[dep], short: true};
+				}
+			}
+			else {
+				return {title: dep, value: deps.dependencies[dep], short: true};
+			}
 		});
 		robot.emit('ibmcloud.formatter', {response: res, attachments: [attachment]});
 	});
