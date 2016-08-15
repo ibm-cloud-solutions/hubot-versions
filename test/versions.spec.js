@@ -33,6 +33,9 @@ describe('Should respond to version requests', function() {
 
 	it('should create a dependencies object from the provided path', function() {
 		let handler, eventType, eventAttachment;
+		const res = {
+			match: ''
+		};
 		const robot = {
 			respond: (pattern, cb) => {
 				handler = cb;
@@ -43,7 +46,7 @@ describe('Should respond to version requests', function() {
 			eventAttachment = attachment;
 		};
 		version(robot);
-		handler();
+		handler(res);
 		expect(eventType).to.equal('ibmcloud.formatter');
 		expect(eventAttachment).to.have.deep.property('attachments[0].pretext', `Your bot is at version ${DEPS.version}.`);
 		expect(eventAttachment).to.have.deep.property('attachments[0].fields').to.be.length(2);
@@ -51,6 +54,31 @@ describe('Should respond to version requests', function() {
 		expect(eventAttachment).to.have.deep.property('attachments[0].fields[0].value').to.equal(DEPS.dependencies['hubot-help']);
 		expect(eventAttachment).to.have.deep.property('attachments[0].fields[1].title').to.equal('hubot-thing');
 		expect(eventAttachment).to.have.deep.property('attachments[0].fields[1].value').to.equal(DEPS.dependencies['hubot-thing']);
+	});
+
+	it('should create a dependencies object from the provided path filtered', function() {
+		let handler, eventType, eventAttachment;
+		const res = {
+			match: 'help'
+		};
+		const robot = {
+			respond: (pattern, cb) => {
+				handler = cb;
+			}
+		};
+		robot.emit = (type, attachment) => {
+			eventType = type;
+			eventAttachment = attachment;
+		};
+		version(robot);
+		handler(res);
+		expect(eventType).to.equal('ibmcloud.formatter');
+		expect(eventAttachment).to.have.deep.property('attachments[0].pretext', `Your bot is at version ${DEPS.version}.`);
+		expect(eventAttachment).to.have.deep.property('attachments[0].fields').to.be.length(2);
+		expect(eventAttachment).to.have.deep.property('attachments[0].fields[0].title').to.equal('hubot-help');
+		expect(eventAttachment).to.have.deep.property('attachments[0].fields[0].value').to.equal(DEPS.dependencies['hubot-help']);
+		expect(eventAttachment).to.not.have.deep.property('attachments[0].fields[1].title').to.equal('hubot-thing');
+		expect(eventAttachment).to.not.have.deep.property('attachments[0].fields[1].value').to.equal(DEPS.dependencies['hubot-thing']);
 	});
 
 });

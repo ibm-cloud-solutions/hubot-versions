@@ -30,8 +30,10 @@ module.exports = robot => {
 
 	robot.respond(SHOW_VERSION, (res) => {
 		let matchString = '';
-		if (res.match.length > 1) {
-			matchString = res.match[1].trim();
+		if (res.match) {
+			if (res.match.length > 1) {
+				matchString = res.match[1].trim();
+			}
 		}
 
 		const attachment = {
