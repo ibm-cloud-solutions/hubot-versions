@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "description": "A Hubot Script for identifying the current versions of the bot and all dependency scripts.",
   "main": "index.js",
-  "respository": {
+  "repository": {
     "url": "https://github.com/ibm-cloud-solutions/hubot-versions",
     "type": "git"
   },
